@@ -9,9 +9,9 @@ This replaces traditional XML configuration.
 
 The project models a simple relationship:
 
-```
+
 Programmer → Laptop
-```
+
 
 The `Programmer` class depends on a `Laptop` object to perform coding tasks.
 
@@ -28,14 +28,14 @@ The `Programmer` class depends on a `Laptop` object to perform coding tasks.
 
 ## 📂 Project Structure
 
-```
+
 src/main/java
  └── com.practice
      ├── App.java
      ├── AppConfig.java
      ├── Laptop.java
      └── Programmer.java
-```
+
 
 ---
 
@@ -45,11 +45,11 @@ src/main/java
 
 The `AppConfig` class is marked with `@Configuration`.
 
-```java
+
 @Configuration
 public class AppConfig {
 }
-```
+
 
 ---
 
@@ -57,7 +57,7 @@ public class AppConfig {
 
 Beans are defined using `@Bean`.
 
-```java
+
 @Bean
 public Laptop laptop() {
     return new Laptop();
@@ -69,7 +69,7 @@ public Programmer programmer() {
     programmer.setLaptop(laptop());
     return programmer;
 }
-```
+
 
 ---
 
@@ -77,28 +77,22 @@ public Programmer programmer() {
 
 The application loads the Spring container using:
 
-```java
+
 ApplicationContext context =
         new AnnotationConfigApplicationContext(AppConfig.class);
-```
+
 
 ---
 
 ### 4. Retrieve Bean
 
-```java
+
 Programmer programmer = context.getBean(Programmer.class);
 programmer.code();
-```
+
 
 ---
 
-## ▶ Example Output
-
-```
-Coding using laptop
-Code Compiling...
-```
 
 ---
 
