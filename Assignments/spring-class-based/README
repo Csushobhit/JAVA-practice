@@ -1,82 +1,58 @@
 # ☕ Spring Core – Java Class Based Configuration
 
-A simple **Spring Core project** demonstrating **Dependency Injection (DI)** using **Java-based configuration instead of XML**.
+## Overview
 
-In this approach, Spring configuration is written in a **Java class** using annotations like `@Configuration` and `@Bean`.
+This project demonstrates **Spring Core configuration using Java classes instead of XML**.
 
----
+In this approach, configuration is written in a **Java class** using annotations like `@Configuration` and `@Bean`.  
+This replaces traditional XML configuration.
 
-## 📚 Overview
+The project models a simple relationship:
 
-Spring supports configuring beans using **pure Java classes** rather than XML files.
 
-The **Spring IoC container** reads configuration from a Java class and manages:
-
-* Object creation
-* Dependency injection
-* Bean lifecycle
-
-This project models a simple relationship:
-
-```
 Programmer → Laptop
-```
+
 
 The `Programmer` class depends on a `Laptop` object to perform coding tasks.
-
-The dependency is configured inside a **Java configuration class (`AppConfig`)**.
 
 ---
 
 ## 🛠 Technologies Used
 
-| Technology  | Purpose                                |
-| ----------- | -------------------------------------- |
-| Java        | Core programming language              |
-| Spring Core | Dependency Injection and IoC container |
-| Maven       | Dependency management                  |
-| Eclipse IDE | Development environment                |
+- Java  
+- Spring Core  
+- Maven  
+- Eclipse IDE  
 
 ---
 
 ## 📂 Project Structure
 
-```
-Spring-Core-Java-Config
-│
-├── src
-│   ├── main
-│   │   ├── java
-│   │   │   └── com.practice
-│   │   │       ├── App.java
-│   │   │       ├── AppConfig.java
-│   │   │       ├── Laptop.java
-│   │   │       └── Programmer.java
-│
-└── pom.xml
-```
+
+src/main/java
+└── com.practice
+├── App.java
+├── AppConfig.java
+├── Laptop.java
+└── Programmer.java
+
 
 ---
 
 ## ⚙️ How It Works
 
-### 1️⃣ Create Configuration Class
+### 1. Configuration Class
 
-The configuration class is annotated with `@Configuration`.
+The `AppConfig` class is marked with `@Configuration`.
 
-```
+```java
 @Configuration
 public class AppConfig {
 }
-```
+2. Define Beans
 
----
+Beans are defined using @Bean.
 
-### 2️⃣ Define Beans Using `@Bean`
-
-Spring beans are defined using `@Bean` methods.
-
-```java
 @Bean
 public Laptop laptop() {
     return new Laptop();
@@ -88,81 +64,34 @@ public Programmer programmer() {
     programmer.setLaptop(laptop());
     return programmer;
 }
-```
+3. Load Spring Context
 
----
+The application loads the Spring container using:
 
-### 3️⃣ Load the Spring Context
-
-The application loads the context using `AnnotationConfigApplicationContext`.
-
-```java
 ApplicationContext context =
         new AnnotationConfigApplicationContext(AppConfig.class);
-```
-
----
-
-### 4️⃣ Retrieve Bean from Container
-
-Spring returns the fully configured object.
-
-```java
+4. Retrieve Bean
 Programmer programmer = context.getBean(Programmer.class);
 programmer.code();
-```
-
----
-
-## ▶ Example Output
-
-```
+▶ Example Output
 Coding using laptop
 Code Compiling...
-```
+🧠 Key Concepts Demonstrated
 
----
+Java Based Configuration
 
-## 🧠 Key Concepts Demonstrated
+@Configuration
 
-* Java-based configuration
-* `@Configuration`
-* `@Bean`
-* Dependency Injection (DI)
-* Spring IoC Container
+@Bean
 
----
+Dependency Injection
 
-## 🎯 Learning Objective
+Spring IoC Container
 
-This project demonstrates how to:
+🎯 Learning Goal
 
-* Configure Spring applications using **Java classes**
-* Replace traditional **XML configuration**
-* Understand how the **Spring IoC container manages beans**
+Understand how to configure Spring applications using pure Java configuration without XML.
 
----
+👨‍💻 Author
 
-## 🚀 Getting Started
-
-### Clone the Repository
-
-```
-git clone https://github.com/your-username/spring-core-java-config.git
-```
-
-### Navigate to the Project
-
-```
-cd spring-core-java-config
-```
-
-### Run the Application
-
-Run `App.java` from your IDE.
-
----
-
-## 👨‍💻 Author
-
-**Sushobhit Chattaraj**
+Sushobhit Chattaraj
