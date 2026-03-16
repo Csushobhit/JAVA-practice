@@ -9,9 +9,9 @@ This replaces traditional XML configuration.
 
 The project models a simple relationship:
 
-
+```
 Programmer → Laptop
-
+```
 
 The `Programmer` class depends on a `Laptop` object to perform coding tasks.
 
@@ -28,14 +28,14 @@ The `Programmer` class depends on a `Laptop` object to perform coding tasks.
 
 ## 📂 Project Structure
 
-
+```
 src/main/java
-└── com.practice
-├── App.java
-├── AppConfig.java
-├── Laptop.java
-└── Programmer.java
-
+ └── com.practice
+     ├── App.java
+     ├── AppConfig.java
+     ├── Laptop.java
+     └── Programmer.java
+```
 
 ---
 
@@ -49,10 +49,15 @@ The `AppConfig` class is marked with `@Configuration`.
 @Configuration
 public class AppConfig {
 }
-2. Define Beans
+```
 
-Beans are defined using @Bean.
+---
 
+### 2. Define Beans
+
+Beans are defined using `@Bean`.
+
+```java
 @Bean
 public Laptop laptop() {
     return new Laptop();
@@ -64,34 +69,55 @@ public Programmer programmer() {
     programmer.setLaptop(laptop());
     return programmer;
 }
-3. Load Spring Context
+```
+
+---
+
+### 3. Load Spring Context
 
 The application loads the Spring container using:
 
+```java
 ApplicationContext context =
         new AnnotationConfigApplicationContext(AppConfig.class);
-4. Retrieve Bean
+```
+
+---
+
+### 4. Retrieve Bean
+
+```java
 Programmer programmer = context.getBean(Programmer.class);
 programmer.code();
-▶ Example Output
+```
+
+---
+
+## ▶ Example Output
+
+```
 Coding using laptop
 Code Compiling...
-🧠 Key Concepts Demonstrated
+```
 
-Java Based Configuration
+---
 
-@Configuration
+## 🧠 Key Concepts Demonstrated
 
-@Bean
+- Java Based Configuration  
+- `@Configuration`  
+- `@Bean`  
+- Dependency Injection  
+- Spring IoC Container  
 
-Dependency Injection
+---
 
-Spring IoC Container
+## 🎯 Learning Goal
 
-🎯 Learning Goal
+Understand how to configure Spring applications using **pure Java configuration** without XML.
 
-Understand how to configure Spring applications using pure Java configuration without XML.
+---
 
-👨‍💻 Author
+## 👨‍💻 Author
 
-Sushobhit Chattaraj
+**Sushobhit Chattaraj**
