@@ -1,57 +1,94 @@
-# Spring Core – XML Based Configuration
+# ☕ Spring Core – XML Based Configuration
 
-A simple Java project demonstrating **Dependency Injection (DI)** in **Spring Core** using **XML-based configuration**.
+A simple **Spring Core project** demonstrating **Dependency Injection (DI)** using **XML-based configuration**.
+
+This project illustrates how the **Spring IoC Container** manages object creation and dependency injection using an XML configuration file.
 
 ---
 
-## 📖 Overview
+## 📚 Overview
 
-In this project, Spring beans are configured using an **XML configuration file**.
+Spring follows the concept of **Inversion of Control (IoC)**. Instead of creating objects manually, the **Spring container** creates and manages objects and their dependencies.
 
-The **Spring IoC container** reads the configuration and manages:
+This project models a simple relationship:
 
-* Object creation
-* Dependency injection
-* Bean lifecycle
-
-The example models a simple relationship:
-
+```
 Programmer → Laptop
+```
 
-Where the `Programmer` class depends on the `Laptop` class.
+The `Programmer` class depends on the `Laptop` class to perform coding tasks.
+
+The dependency is injected using **Setter Injection** defined in **beans.xml**.
 
 ---
 
 ## 🛠 Technologies Used
 
-* Java
-* Spring Core
-* Maven
-* Eclipse IDE
+| Technology  | Purpose                                |
+| ----------- | -------------------------------------- |
+| Java        | Core programming language              |
+| Spring Core | Dependency Injection and IoC container |
+| Maven       | Dependency management                  |
+| Eclipse IDE | Development environment                |
 
 ---
 
 ## 📂 Project Structure
 
 ```
-src/main/java
- └── com.practice
-     ├── App.java
-     ├── Laptop.java
-     └── Programmer.java
-
-src/main/resources
- └── beans.xml
+Spring-Core-XML-DI
+│
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com.practice
+│   │   │       ├── App.java
+│   │   │       ├── Laptop.java
+│   │   │       └── Programmer.java
+│   │   │
+│   │   └── resources
+│   │       └── beans.xml
+│
+└── pom.xml
 ```
 
 ---
 
 ## ⚙️ How It Works
 
-1. Beans are defined in **beans.xml**.
-2. Spring loads the configuration using `ClassPathXmlApplicationContext`.
-3. The `Laptop` bean is injected into the `Programmer` bean using **setter injection**.
-4. The main class retrieves the `Programmer` bean and calls the `code()` method.
+### 1️⃣ Define Beans in XML
+
+Beans are defined inside `beans.xml`.
+
+```xml
+<bean id="laptop" class="com.practice.Laptop"/>
+
+<bean id="programmer" class="com.practice.Programmer">
+    <property name="laptop" ref="laptop"/>
+</bean>
+```
+
+---
+
+### 2️⃣ Load Spring IoC Container
+
+Spring loads the configuration using:
+
+```java
+ApplicationContext context =
+        new ClassPathXmlApplicationContext("beans.xml");
+```
+
+---
+
+### 3️⃣ Retrieve Bean from Container
+
+Spring returns the fully configured object.
+
+```java
+Programmer programmer = context.getBean("programmer", Programmer.class);
+programmer.code();
+```
 
 ---
 
@@ -67,12 +104,51 @@ Code Compiling...
 ## 🧠 Key Concepts Demonstrated
 
 * Inversion of Control (IoC)
-* Dependency Injection
-* XML-based Bean Configuration
+* Dependency Injection (DI)
+* Setter Injection
 * Spring IoC Container
+* XML-based Bean Configuration
 
 ---
 
-## 🎯 Learning Goal
+## 🎯 Learning Objective
 
-Understand how **Spring manages object creation and dependencies** using **XML configuration**.
+This project helps understand:
+
+* How Spring **creates and manages objects**
+* How **dependencies are injected automatically**
+* How **XML configuration works in Spring Core**
+
+---
+
+## 🚀 Getting Started
+
+### Clone the repository
+
+```
+git clone https://github.com/your-username/spring-core-xml-di.git
+```
+
+### Navigate to the project
+
+```
+cd spring-core-xml-di
+```
+
+### Run the project
+
+Run `App.java` from your IDE.
+
+---
+
+## 📌 Future Improvements
+
+* Add **Constructor Injection**
+* Convert XML configuration to **Java-based configuration**
+* Convert project to **Spring Boot**
+
+---
+
+## 👨‍💻 Author
+
+**Sushobhit Chattaraj**
