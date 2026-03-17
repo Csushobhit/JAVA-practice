@@ -194,6 +194,6 @@ Hibernate will automatically create the required tables.
 
 ## Author
 
-**Adarsh Kumar Jha**
+**Sushobhit Chattaraj**
 Institute of Engineering and Management
 Department of Computer Science and Engineering (AI)
